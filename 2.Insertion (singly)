@@ -1,0 +1,75 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+class node{
+    public :
+    int data;
+    node *next;
+};
+node * insert(node* head,int val,int pos){
+    if(head==NULL){
+        return NULL;
+    }
+    node* p=new node();
+    p->data=val;
+    p->next=NULL;
+    if(pos==0){
+        p->next=head;
+        head=p;
+        return head;
+    }
+    else{ node* q=head; int i=0; 
+        if(pos!=0){
+            while(q->next!=NULL){
+                if(i==pos-1){
+                    p->next=q->next;
+                    q->next=p;
+                 return head;
+                }
+                i++;
+                q=q->next;
+            }
+            if(q->next==NULL){
+                q->next=p;
+                return head;
+            }
+        }
+    }
+}
+    int main(){
+        int n; // #elements
+        cin>>n;
+        node* head,*p,*q;
+        head=NULL;
+        for(int i=0;i<n;i++)
+        { 
+          p = new node(); int x;
+            cin>>x;
+            p->data=x;
+            p->next=NULL;
+            if(head==NULL){
+                head=p;
+                q=head;
+            }
+            else{
+                q->next=p;
+                q=p;
+                
+            }}
+            
+        int pos,val;
+        cin>>val>>pos;
+        node *ans=insert(head,val,pos);
+        while(ans!=NULL){
+            cout<<ans->data;
+            ans=ans->next;
+        }
+            
+        }
+/*i/p :
+5
+1 1 2 3 4 
+2 1
+
+O/P : 121234
+*/
