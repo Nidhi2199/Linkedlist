@@ -18,6 +18,7 @@ Node *deleteNode(Node *head, int pos)
             p=p->next;}
            if(p->next==NULL){
                p->next=NULL;
+               return head;
            }
         
         }
