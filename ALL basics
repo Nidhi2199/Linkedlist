@@ -1,0 +1,107 @@
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int data) {
+       this->data = data;
+       this->next = nullptr;
+    }
+};
+
+void insert(int data, Node*& head) {
+    Node* new_node = new Node(data);
+    if (head == nullptr) {
+        head = new_node;
+    } else {
+        Node* current = head;
+        while (current->next != nullptr) {
+            current = current->next;
+        }
+        current->next = new_node;
+    }
+}
+void length(Node*&head){
+    // Node*p=head; int c=0;
+    // while(p!=NULL){
+    //     c++;
+    //     p=p->next;
+    // }
+    // cout<<c<<endl;
+    Node*s=head,*f=head;
+    while(f!=NULL && f->next!=NULL){
+        s=s->next;
+        f=f->next->next;
+        
+    }
+    cout<<s->data;
+    if(f==NULL){
+        cout<<"even";
+    }
+    else{
+        cout<<"odd";
+    }
+    
+}
+
+void deleted(int d,Node*&head){
+    Node* p=head;
+    while(p->next->data!=d){
+        p=p->next;
+    }
+    p->next=p->next->next;
+    
+}
+void insertat(int dat,int i,Node*&head){
+    Node* n=new Node(dat);
+    Node*p=head;
+    int j=1;
+    while(j<i-1){
+        p=p->next;
+        j++;
+    }
+    n->next=p->next->next;
+    p->next=n;
+}
+
+int main() {
+    Node* head = nullptr;
+    while (true) {
+        string input;
+        cout << "element/'done'/ finish: ";
+        cin >> input;
+        if (input == "done") {
+            break;
+        }
+        int data = stoi(input);
+        insert(data, head);
+    }
+
+    Node* current = head;
+    while (current != nullptr) {
+        cout << current->data << " -> ";
+        current = current->next;
+    }
+    cout << "NULL" << endl;
+    length(head);
+    
+    // deleted(7,head);
+    // Node* c = head;
+    // while (c!= nullptr) {
+    //     cout << c->data << " -> ";
+    //     c = c->next;
+    // }
+    // cout << "NULL" << endl;
+    insertat(9,3,head);
+     Node*c = head;
+    while (c!= nullptr) {
+        cout << c->data << " -> ";
+        c = c->next;
+    }
+    cout << "NULL" << endl;
+    return 0;
+}
