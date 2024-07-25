@@ -67,7 +67,36 @@ void insertat(int dat,int i,Node*&head){
     n->next=p->next->next;
     p->next=n;
 }
-
+Node* rev(Node*h){
+    if(h==NULL ||h->next==NULL){
+        return h;
+    }
+    Node* n=rev(h->next);
+    Node*c=h->next;
+    c->next=h;
+    h->next=NULL;
+    return n;
+}
+Node* revit(Node*h){
+    Node*p=NULL,*c=h;
+    while(c!=NULL){
+        Node*n=c->next;
+        c->next=p;
+    p=c;
+    c=n;
+        
+        
+    }
+    return p;
+}
+void print(Node* h){
+     Node*c = h;
+    while (c!= nullptr) {
+        cout << c->data << " -> ";
+        c = c->next;
+    }
+    cout << "NULL" << endl;
+}
 int main() {
     Node* head = nullptr;
     while (true) {
@@ -81,12 +110,7 @@ int main() {
         insert(data, head);
     }
 
-    Node* current = head;
-    while (current != nullptr) {
-        cout << current->data << " -> ";
-        current = current->next;
-    }
-    cout << "NULL" << endl;
+    print(head);
     length(head);
     
     // deleted(7,head);
@@ -97,11 +121,11 @@ int main() {
     // }
     // cout << "NULL" << endl;
     insertat(9,3,head);
-     Node*c = head;
-    while (c!= nullptr) {
-        cout << c->data << " -> ";
-        c = c->next;
-    }
-    cout << "NULL" << endl;
+     print(head);
+    // Node* g=rev(head);
+    // print(g);
+    Node*gg=revit(head);
+    print(gg);
+    
     return 0;
 }
